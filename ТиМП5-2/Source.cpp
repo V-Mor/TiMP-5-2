@@ -33,7 +33,7 @@ int main()
 	// »спользу€ подход€щий алгоритм, найти в контейнере элемент, удовлетвор€ющий заданному условию
 
 	bool pred(const UserType &T);
-	deque<UserType>::iterator findedEl = find(dq->begin(), dq->end(), pred);
+	deque<UserType>::iterator findedEl = find_if(dq->begin(), dq->end(), pred);
 
 	// ѕереместить элементы, удовлетвор€ющие заданному условию в другой (предварительно пустой) контейнер
 
@@ -49,7 +49,7 @@ int main()
 		if ((findedEl == dq->end()) && !(pred(*findedEl)))
 			break;
 		mst->insert(*findedEl);
-		findedEl = find(findedEl, dq->end(), pred);
+		findedEl = find_if(findedEl, dq->end(), pred);
 	}
 
 	return 0;
