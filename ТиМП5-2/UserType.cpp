@@ -1,13 +1,18 @@
-/* Реализация операций сравнения для пользовательского типа */
+/* Реализация операторов сравнения для пользовательского типа данных */
 
 #include"Header.h"
 
-bool UserType::operator< (UserType secondArg)
+bool UserType::operator> (const UserType secondArg) const
 {
-	return (this->x < secondArg.x);
+return (x > secondArg.x);
 }
 
-bool UserType::operator> (UserType secondArg)
+bool UserType::operator< (const UserType secondArg) const
 {
-	return (this->x > secondArg.x);
+	return (x < secondArg.x);
+}
+
+bool UserType::operator== (UserType secondArg)
+{
+	return (x == secondArg.x);
 }

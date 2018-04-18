@@ -1,7 +1,9 @@
 #include<iostream>
 #include<algorithm>
+#include<deque>
 #include<set>
 #include<functional>
+#include<memory>
 
 using namespace std;
 
@@ -11,8 +13,12 @@ public:
 	int x;
 	char c;
 	double d[50];
-	bool operator> (UserType);
-	bool operator< (UserType);
+
+	bool operator> (const UserType secondArg) const;
+
+	bool operator< (const UserType secondArg) const;
+
+	bool operator== (UserType secondArg);
 };
 
 template<class T>
