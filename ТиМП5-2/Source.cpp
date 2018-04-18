@@ -13,8 +13,8 @@ int main()
 	mst->insert({ -1689, 'a', { 0.0, 0.0, 0.00001, 1e+15 } });*/
 
 	unique_ptr<deque<UserType>> dq = make_unique<deque<UserType>>();
-	dq->push_back({ 1, 'z',{ 0.1, 0.5, 0.15 } });
-	dq->push_back({ -15, 'e',{ 0.1, 0.5, 0.15, -0.333, 0.9 } });
+	dq->push_back({ 1, 'z',{ 0.12358, 0.5, 0.15 } });
+	dq->push_back({ -15, 'e',{ 0.7, 0.5, 0.15, -0.333, 0.9 } });
 	dq->push_back({ 87, 'h',{ 0.1 } });
 	dq->push_back({ 15, 'z', NULL });
 	dq->push_back({ -1689, 'a',{ 0.0, 0.0, 0.00001, 1e+15 } });
@@ -41,16 +41,25 @@ int main()
 
 	for(;;)
 	{
-		if ((findedEl == dq->end()) && pred(*findedEl))
+		/*if ((findedEl == dq->end()) && pred(*(findedEl))
 		{
 			mst->insert(*findedEl);
 			break;
 		}
 		if ((findedEl == dq->end()) && !(pred(*findedEl)))
+			break;*/
+		if ((findedEl == dq->end()))
 			break;
 		mst->insert(*findedEl);
-		findedEl = find_if(findedEl, dq->end(), pred);
+		findedEl = find_if(findedEl + 1, dq->end(), pred);
 	}
+
+	// Просмотреть второй контейнер
+
+	cout << "Second container:\n";
+	for (auto i = mst->begin(); i != mst->end(); ++i)
+		cout << i->x << " " << i->c << " " << i->d[0] << "..." << endl;
+	cout << endl;
 
 	return 0;
 }
