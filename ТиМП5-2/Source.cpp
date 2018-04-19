@@ -61,12 +61,32 @@ int main()
 		cout << i->x << " " << i->c << " " << i->d[0] << "..." << endl;
 	cout << endl;
 
+	// Отсортировать первый и второй контейнеры по возрастанию элементов
+
+	sort(dq->begin(), dq->end());
+	unique_ptr<multiset<UserType>> msts(Multisorter<UserType>::increaseSort(mst.get()));
+
+	// Просмотреть их
+
+	cout << "First container:\n";
+	for (auto i = dq->begin(); i != dq->end(); ++i)
+		cout << i->x << " " << i->c << " " << i->d[0] << "..." << endl;
+	cout << endl;
+	cout << "Second container:\n";
+	for (auto i = msts->begin(); i != msts->end(); ++i)
+		cout << i->x << " " << i->c << " " << i->d[0] << "..." << endl;
+	cout << endl;
+
+	// Получить третий контейнер путем слияния первых двух
+
+
+
 	return 0;
 }
 
 bool pred(const UserType &T)
 {
-	if (T.x < 100)
+	if (T.x < 10)
 		return true;
 	return false;
 }
