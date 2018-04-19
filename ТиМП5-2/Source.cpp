@@ -79,7 +79,25 @@ int main()
 
 	// ѕолучить третий контейнер путем сли€ни€ первых двух
 
+	unique_ptr<deque<UserType>> dq3(new deque<UserType>);
+	merge(dq->begin(), dq->end(), msts->begin(), msts->end(), back_inserter(*dq3));
 
+	// ѕросмотреть третий контейнер
+
+	cout << "Third container:\n";
+	for (auto i = dq3->begin(); i != dq3->end(); ++i)
+		cout << i->x << " " << i->c << " " << i->d[0] << "..." << endl;
+	cout << endl;
+
+	// ѕодсчитать, сколько элементов, удовлетвор€ющих заданному условию, содержит третий контейнер
+
+	int count = count_if(dq3->begin(), dq3->end(), pred);
+	cout << "Third container consist " << count << " special elements\n";
+
+	// ќпределить, есть ли в третьем контейнере элемент, удовлетвор€ющий заданному условию.
+
+	if (find_if(dq3->begin(), dq3->end(), pred) != dq3->end())
+		cout << "Third container consist special element\n";
 
 	return 0;
 }
